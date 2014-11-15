@@ -16,3 +16,8 @@
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
+
+.navbar form {
+	float: left;
+	padding: 15px;
+}

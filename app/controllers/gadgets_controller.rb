@@ -5,8 +5,15 @@ class GadgetsController < ApplicationController
 
 
 	def index
-		@gadgets = Gadget.where("user_id" => current_user.id)
-		@images = Image.find_by_sql("select * from gadgets g, images i where i.gadget_id = g.id and g.user_id = #{current_user.id}")
+		if params[:q]
+			@search_string = params[:q]
+			@query_string = @search_string.gsub(/[^0-9a-z ]/i, '')
+			logger.info "@query_string: " + @query_string
+			@gadgets = Gadget.find_by_sql("select * from gadgets where (name like '%#{@query_string}%' or manufacturer like '%#{@query_string}%') and user_id = #{current_user.id} order by created_at DESC")
+		else
+			@gadgets = Gadget.where("user_id" => current_user.id)
+			@images = Image.find_by_sql("select * from gadgets g, images i where i.gadget_id = g.id and g.user_id = #{current_user.id}")
+		end
 	end
 
 	def new
