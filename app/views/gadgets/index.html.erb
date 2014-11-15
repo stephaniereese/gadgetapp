@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+	Welcome <%= current_user.id %>!   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<% end %>
+
+<br />
+
+This is your homepage.
+
+<%= link_to 'Add Gadget', new_gadget_path %><br />
+
+<% if !@gadgets.blank? %>
+	<% @gadgets.each do |g| %>
+	<%= g.name %>
+	<%= g.manufacturer %>
+	<%= g.retired %>
+	<br /><br />
+	<% end %>
+<% else %>
+	You don't have any gadgets! What a shame.
+<% end %>

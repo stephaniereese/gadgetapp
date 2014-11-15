@@ -54,9 +54,10 @@ Gadgetapp::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  root to: "gadgets#index"
 
-  resources :home, :only => [:index]
+  resources :gadgets
 
-  root to: "home#index"
 
 end
