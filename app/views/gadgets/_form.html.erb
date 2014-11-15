@@ -1,16 +1,16 @@
 <%= form_for @gadget, :html => {:multipart => true} do |f| %>
 
-    <%= f.label :name %><br />
-    <%= f.text_field :name %><br />
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "form-control" %>
 
-    <%= f.label :manufacturer %><br />
-    <%= f.text_field :manufacturer %><br />
+    <%= f.label :manufacturer %>
+    <%= f.text_field :manufacturer, :class => "form-control" %>
 
-    <%= f.label :retired %><br />
+    <%= f.label :retired %>
     <%= f.check_box :retired %><br />
     
-    <%= f.label :images %><br />
-    <%= file_field_tag "images[]", type: :file, multiple: true %><br />
+    <%= f.label :images %>
+    <%= file_field_tag "images[]", type: :file, multiple: true, :class => "form-control" %>
 
     <button type="submit" class="btn btn-primary">Submit</button>
 <% end %>

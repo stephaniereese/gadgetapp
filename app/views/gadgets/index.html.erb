@@ -1,20 +1,31 @@
-<% if user_signed_in? %>
-	Welcome <%= current_user.id %>!   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-<% end %>
+<div class="container">
+	<% if !@gadgets.blank? %>
 
-<br />
+	<%= render "carousel" %>
 
-This is your homepage.
-
-<%= link_to 'Add Gadget', new_gadget_path %><br />
-
-<% if !@gadgets.blank? %>
-	<% @gadgets.each do |g| %>
-	<%= g.name %>
-	<%= g.manufacturer %>
-	<%= g.retired %>
-	<br /><br />
+	  <table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th>Name</th>
+	        <th>Manufacturer</th>
+	        <th>Retired</th>
+	        <th></th>
+	        <th></th>
+	      </tr>
+	    </thead>
+	    <tbody>
+				<% @gadgets.each do |g| %>
+					<tr>          
+						<td><%= g.name %></td>
+						<td><%= g.manufacturer %></td>
+						<td><%= g.retired %></td>
+						<td><%= link_to 'Edit', edit_gadget_path(g) %></td>
+          	<td><%= link_to 'Delete', g, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% else %>
+		You don't have any gadgets! What a shame.
 	<% end %>
-<% else %>
-	You don't have any gadgets! What a shame.
-<% end %>
+</div>

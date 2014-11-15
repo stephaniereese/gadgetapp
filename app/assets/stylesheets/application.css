@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+.current_user {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}

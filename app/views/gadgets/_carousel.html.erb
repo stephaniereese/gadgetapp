@@ -1,0 +1,24 @@
+<div id="slider">
+  <div class="slick-carousel">
+    <% @images.each do |i| %>
+      <div>
+        <a>
+        <% if @images.count < 6 %>
+          <img src="<%= root_url + "/images/" + i.id.to_s + "/" + i.photo_file_name %>" width="80" height="80"/>
+        <% else %>
+          <img data-lazy="<%= root_url + "/images/" + i.id.to_s + "/" + i.photo_file_name %>" width="80" height="80"/>
+        <% end %>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $('.slick-carousel').slick({
+    lazyLoad: 'ondemand',
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    infinite: true
+  });
+</script>
