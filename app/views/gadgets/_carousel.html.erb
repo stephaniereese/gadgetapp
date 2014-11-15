@@ -4,9 +4,9 @@
       <div>
         <a>
         <% if @images.count < 6 %>
-          <img src="<%= root_url + "/images/" + i.id.to_s + "/" + i.photo_file_name %>" width="80" height="80"/>
+          <img src="<%= root_url + "system/images/photos/000/000/0" + i.id.to_s + "/large/" + i.photo_file_name %>" />
         <% else %>
-          <img data-lazy="<%= root_url + "/images/" + i.id.to_s + "/" + i.photo_file_name %>" width="80" height="80"/>
+          <img data-lazy="<%= root_url + "system/images/photos/000/000/0" + i.id.to_s + "/large/" + i.photo_file_name %>" />
         <% end %>
         </a>
       </div>

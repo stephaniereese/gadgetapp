@@ -6,6 +6,7 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>Image</th>
 	        <th>Name</th>
 	        <th>Manufacturer</th>
 	        <th>Retired</th>
@@ -15,7 +16,12 @@
 	    </thead>
 	    <tbody>
 				<% @gadgets.each do |g| %>
-					<tr>          
+					<tr>  
+						<td>    
+							<% if g.images[0] %>    
+								<img src="<%= root_url + "system/images/photos/000/000/0" + g.images[0].id.to_s + "/small/" +  g.images[0].photo_file_name %>"/> 
+							<% end %>
+						</td>
 						<td><%= g.name %></td>
 						<td><%= g.manufacturer %></td>
 						<td><%= g.retired %></td>
