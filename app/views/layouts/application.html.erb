@@ -24,11 +24,11 @@
     <ul class="nav navbar-nav">
       <li><%= link_to "Add Gadget", new_gadget_path %></li>  
     </ul>
-    <%= form_tag(url_for(:action => "index", :controller => "gadgets"), :method => :get) do %>
-      <%= text_field_tag :q, params[:q] %>
-      <button type="submit" class="btn btn-primary">Search</button>
-    <% end %>
     <% if user_signed_in? %>
+      <%= form_tag(url_for(:action => "index", :controller => "gadgets"), :method => :get) do %>
+        <%= text_field_tag :q, params[:q] %>
+        <button type="submit" class="btn btn-primary">Search</button>
+      <% end %>
 			<ul class="nav navbar-nav navbar-right">
 			  <li class="current_user">Welcome <%= current_user.email%>! </li>
 		      <li><%= link_to("Log Out", destroy_user_session_path, :method => :delete)  %></li>
