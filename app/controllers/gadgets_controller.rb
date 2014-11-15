@@ -66,7 +66,4 @@ class GadgetsController < ApplicationController
       params.require(:gadget).permit(:name, :manufacturer, :retired)
     end
 
-    def image_params
-    end
-
 end
